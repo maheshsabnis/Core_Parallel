@@ -1,0 +1,118 @@
+﻿@model DataViewModel
+@{
+    ViewData["Title"] = "Home Page!!!!";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Taking Advantahes of  Parallel.For() in ASP.NET Core </h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <h5>The Non-Parallel Execution</h5>
+                </th>
+                <th>
+                    <h5>The Parellel Execution</h5>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            
+            <tr>
+                <td>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    EmpNo
+                                </th>
+                                <th>
+                                    EmpName
+                                </th>
+                                <th>
+                                    Salary
+                                </th>
+                                <th>
+                                    TDS
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var emp in Model.NonParallelEmployeesResult)
+                             {  
+                                <tr>
+                                    <td>
+                                        @emp.EmpNo
+                                    </td>
+                                    <td>
+                                        @emp.EmpName
+                                    </td>
+                                    <td>
+                                        @emp.Salary
+                                    </td>
+                                    <td>
+                                        @emp.TDS
+                                    </td>
+                                </tr>
+                             }
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    EmpNo
+                                </th>
+                                <th>
+                                    EmpName
+                                </th>
+                                <th>
+                                    Salary
+                                </th>
+                                <th>
+                                    TDS
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var emp in Model.ParallelEmployeesResult)
+                            {
+                                <tr>
+                                    <td>
+                                        @emp.EmpNo
+                                    </td>
+                                    <td>
+                                        @emp.EmpName
+                                    </td>
+                                    <td>
+                                        @emp.Salary
+                                    </td>
+                                    <td>
+                                        @emp.TDS
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    Non-Parallel Time in Seconds: @Model.NonParallelTotalDuration
+                </td>
+                <td>
+                    Parallel Time in Seconds: @Model.ParallelTotalDuration
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+
+</div>
+
